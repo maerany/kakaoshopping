@@ -1,9 +1,12 @@
 package com.example.kakaoshopping.domain.user;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
@@ -21,21 +24,27 @@ public class User {
 
      */
 
-    @Id // primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동증가
-    private Long id;
-
-    @Column(length = 100, nullable = false)
-    private String email;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(length = 100, nullable = false, unique = true)
+    private String email; // 인증시 필요한 필드
     @Column(length = 256, nullable = false)
     private String password;
-
     @Column(length = 45, nullable = false)
     private String username;
 
-    // columnDefinition으로 길이랑 null여부 작성 가능함 Default 설정은 해당 속성만 사용
-    @Column(length = 45, columnDefinition = "DEFAULT NULL")
-    private String roles;
+    @Column(length = 30)
+    @Convert(converter = StringArrayConverter.class)
+    private List<String> roles = new ArrayList<>(); // role은 한 개 이상
+
+    @Builder
+    public User(int id, String email, String password, String username, List<String> roles) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.username = username;
+        this.roles = roles;
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.example.kakaoshopping.domain.order;
 
+import com.example.kakaoshopping.domain.user.User;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,9 +15,15 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    @Builder
+    public Order(int id, User user) {
+        this.id = id;
+        this.user = user;
+    }
 
 }

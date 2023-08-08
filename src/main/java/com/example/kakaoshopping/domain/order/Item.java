@@ -1,6 +1,7 @@
 package com.example.kakaoshopping.domain.order;
 
 import com.example.kakaoshopping.domain.product.Option;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,20 +18,25 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "option_id", nullable = false)
-    private Option optionId;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Option option;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Order order;
 
     @Column(nullable = false)
     private int quantity;
-
     @Column(nullable = false)
     private int price;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    private Order orderId;
 
+    @Builder
+    public Item(int id, Option option, Order order, int quantity, int price) {
+        this.id = id;
+        this.option = option;
+        this.order = order;
+        this.quantity = quantity;
+        this.price = price;
+    }
 }
