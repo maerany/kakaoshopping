@@ -10,6 +10,9 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
+  sql:
+    init:
+      mode: always
   h2:
     console:
       enabled: true
@@ -22,6 +25,7 @@ spring:
         format_sql: true
       default_batch_fetch_size: 100
     open-in-view: false
+    defer-datasource-initialization: true
   output:
     ansi:
       enabled: always
@@ -33,3 +37,8 @@ logging:
 
 file:
   path: ./images/
+
+
+# default_batch_fetch_size
+#-> 영속성 컨텍스트에 작성한 사이즈만큼
+# 값을 모아서 DB에 보내고, commit

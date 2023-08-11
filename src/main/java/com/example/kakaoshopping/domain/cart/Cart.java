@@ -28,10 +28,11 @@ public class Cart {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     private User user; // user별로 장바구니에 묶여 있음.
+    // 다(cart) : 1(user)
 
     @OneToOne(fetch = FetchType.LAZY)
     private Option option;
-
+    // 하나의 옵션 객체만 가지는 건가?
     @Column(nullable = false)
     private int quantity;
 
