@@ -1,4 +1,4 @@
-package com.example.kakaoshopping.config.auth;
+package com.example.kakaoshopping._core.config.auth;
 
 
 import org.springframework.context.annotation.Configuration;
