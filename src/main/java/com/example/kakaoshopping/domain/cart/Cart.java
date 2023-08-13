@@ -1,6 +1,6 @@
 package com.example.kakaoshopping.domain.cart;
 
-import com.example.kakaoshopping.domain.product.Option;
+import com.example.kakaoshopping.domain.option.Option;
 import com.example.kakaoshopping.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;

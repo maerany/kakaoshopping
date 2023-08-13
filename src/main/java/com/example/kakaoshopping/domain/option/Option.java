@@ -1,5 +1,6 @@
-package com.example.kakaoshopping.domain.product;
+package com.example.kakaoshopping.domain.option;
 
+import com.example.kakaoshopping.domain.product.Product;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

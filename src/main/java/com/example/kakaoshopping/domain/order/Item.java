@@ -1,6 +1,6 @@
 package com.example.kakaoshopping.domain.order;
 
-import com.example.kakaoshopping.domain.product.Option;
+import com.example.kakaoshopping.domain.option.Option;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
