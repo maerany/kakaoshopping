@@ -36,7 +36,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
+                //.apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.any()) // RequestMapping의 모든 URL LIST
                 .paths(PathSelectors.any()) // .any() -> ant(/api/**") /api/**인 URL만 표시
@@ -47,7 +47,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
     // 아래 부분은 WebMvcConfigure 를 상속받아서 설정하는 Mehtod
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/swagger-ui.html")
+        registry.addResourceHandler("swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
 
         registry.addResourceHandler("/webjars/**")
@@ -56,5 +56,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
 
     }
+
+
 }
 
