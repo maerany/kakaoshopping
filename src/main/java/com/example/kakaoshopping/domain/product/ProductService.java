@@ -18,14 +18,12 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    private final ProductRepository productRepository;
-    private final OptionJPARepository optionJPARepository;
+    private final ProductJPARepository productJPARepository;
 
-    public List<Product> findProducts(){
-        return productRepository.findAll();
+    public ProductResponse.FindAllDTO findAll(){
+        List<Product> productLists = productJPARepository.findAll();
+        return new ProductResponse.FindAllDTO(productLists);
     }
 
-    public List<Option> findByProductId(int productId){
-         return optionJPARepository.findByProductId(productId);
-    }
+
 }
