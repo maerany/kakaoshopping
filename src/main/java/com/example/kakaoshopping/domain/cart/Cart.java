@@ -39,6 +39,17 @@ public class Cart {
     @Column(nullable = false)
     private int price;
 
+    /*
+        @Builder
+         : 객체를 생성하기 위해 생성자를 이용하게 되면 인자값의 순서와 가독성이 어렵다는 단점이 있다.
+           이러한 단점을 극복하기 위한 방법으로 Builder 방식을 이용함.
+           Builder 패턴으로 생성자를 만들면 어떤 인자에 어떤 값을 넣는 지 가독성이 좋아지며,
+           인자의 순서를 신경쓰지 않아도 된다.
+
+           class에 @Builder를 선언하게 되면 모든 매개변수가 생성자의 param으로 들어가고
+           객체 생성시 필요없는 매개변수도 builder에 노출이 되는 문제점이 발생함
+           -> 이를 해결하기 위해 생성자 위에 @Builder 사용한다.
+     */
     @Builder
     public Cart(int id, User user, Option option, int quantity, int price) {
         this.id = id;

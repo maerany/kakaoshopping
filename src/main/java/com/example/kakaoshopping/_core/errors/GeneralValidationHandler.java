@@ -8,6 +8,9 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
+
+// Aspect : Pointcut + Advice의 결합
+// 어떤 poincut 메소드에 대해 어떤 advice 메소드를 실행할지 결정
 @Aspect
 @Component
 public class GeneralValidationHandler {
@@ -20,9 +23,11 @@ public class GeneralValidationHandler {
     public void postMapping(){
     }
 
+    // advice : 횡단 관심에 헤당하는 공통 기능 코드 의미
     // postMapping() 메소드가 실행되기 이전에 실행
     @Before("postMapping()")
     public void validationAdvice(JoinPoint jp){
+        // postMapping때 400error에 대한 로직 처리 ?
         Object[] args = jp.getArgs();
         for(Object arg : args){
             if(arg instanceof Errors){
