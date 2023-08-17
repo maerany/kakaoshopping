@@ -1,5 +1,6 @@
-package com.example.kakaoshopping.domain.product;
+package com.example.kakaoshopping.domain.option;
 
+import com.example.kakaoshopping.domain.product.Product;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -7,10 +8,14 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+// 재고 관리 여부는 없다.
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name = "option_tb")
-@Table(indexes = @Index(name = "option_product_id_idx", columnList = "product_id"))
+@Entity
+@Table(name="option_tb",
+        indexes = {
+                @Index(name = "option_product_id_idx", columnList = "product_id")
+        })
 public class Option {
 
     @Id
@@ -31,5 +36,4 @@ public class Option {
         this.optionName = optionName;
         this.price = price;
     }
-
 }
